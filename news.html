@@ -15,11 +15,10 @@
       .n_c{
         max-width: 960px;
         margin: 16px auto;
-        border-radius: 12px;
         padding-top: 11.5px;
         padding-bottom: 9px;
         padding-left: 15.5px;
-        font-size: 16px;
+        border-radius: 12px;
       }
 
       .n_c .day{
@@ -37,46 +36,12 @@
     <script src="news/n_data.js"></script>
     <script src="j_share.js"></script>
   </head>
-  <body>
+  <body class="font_c" lang="ja">
     <div class="back_a" id="back_g">
-
-      <div id="lang_trans1" class="font_c" lang="ja">
-        <div class="top_bar">
-          <div class="bar_l"><img src = "p_logo.png"></img></div>
-          <div class="bar_r">
-            <a href = "index.html">ホーム</a>
-            <a href = "news.html">お知らせ</a>
-            <a href = "index/profile.html">自己紹介</a>
-            <a href = "music_v.html">ミュージックビデオ</a>
-            <a href = "index/learning.html">学習</a>
-            <a href = "index/contact.html">問い合わせ</a>
-            <a href = "index/shop.html">お店</a>
-            <div class="lab">言語を選択：</div>
-            <div class="language_select">
-              <select id="language" onchange="changeLanguage(this.value)">
-                <option value="ja">日本語</option>
-                <option value="en">English</option>
-                <option value="zh">中文</option>
-                <option value="ko">한국어</option>
-                <option value="fr">Français</option>
-                <option value="de">Deutsch</option>
-                <option value="it">Italiano</option>
-                <option value="es">Español</option>
-                <option value="pt">Português</option>
-                <option value="pl">Polski</option>
-                <option value="tr">Türkçe</option>
-                <option value="ru">Русский</option>
-                <option value="uk">Українська</option>
-              </select>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="m"></div><!--どうやらワンクッション置かないとだめっぽい-->
-
-      <div class="n_c font_c" lang="ja">
-        <div id="lang_trans5"></div>
+      <div id="menu"></div>
+      <div class="m"></div>
+      <div class="n_c">
+        <div id="n"></div>
       </div>
     </div>
   </body>
