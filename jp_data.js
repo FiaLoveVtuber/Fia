@@ -839,7 +839,7 @@ const p_data = [
 　いろいろ強引だったけど、それでも感謝しているよ。<br>
 <br>
 <p>★フィアちゃんのお姉ちゃん</p>
-　<a href ="https://www.youtube.com/@kasumiV0111/streams"><img src="p_youtube_icon.png"></a><a href ="https://twitter.com/K_kasumiV"><img src="p_x_icon.png"></a><br>
+　<a href ="https://www.youtube.com/@kasumiV0111/streams"><img src="p_youtube_icon.png"></a><a href ="https://x.com/K_kasumiV"><img src="p_x_icon.png"></a><br>
 　かすみお姉ちゃん（胡蝶かすみ）です。<br>
 　<br>
 　フィアちゃんに相手に好きであること伝える大切さを教えてもらいました。<br>
@@ -847,7 +847,7 @@ const p_data = [
 　血のつながりこそないもののフィアちゃんにとっては特別な家族です。<br>
 <br>
 <p>★てけひろさん</p>
-　<a href =""><img src="p_koko.png"></a><a href =""><img src="p_x_icon.png"></a><br>
+　<a href ="https://coconala.com/users/1846638"><img src="p_koko.png"></a><a href ="https://x.com/tekehiro"><img src="p_x_icon.png"></a><br>
 　色々困ってた時にようやく発見できたママさんです。<br>
 　こちらの複雑な事情を聞いていただいて、フィアちゃんを作り直して<br>
 　描いていただきました。<br>
@@ -856,14 +856,14 @@ const p_data = [
 　大変感謝、感激しています。<br>
 <br>
 <p>★あかさたぬさん</p>
-　<a href =""><img src="p_koko.png"></a><a href ="https://www.youtube.com/@akasatanu"><img src="p_youtube_icon.png"></a><a href ="https://twitter.com/akasatanu512"><img src="p_x_icon.png"></a><br>
+　<a href ="https://coconala.com/users/131018"><img src="p_koko.png"></a><a href ="https://www.youtube.com/@akasatanu"><img src="p_youtube_icon.png"></a><a href ="https://x.com/akasatanu512"><img src="p_x_icon.png"></a><br>
 　私を描いてくれたママです。<br>
 　私を生み出してくれて本当にありがとう♪大変感謝、感激しています。<br>
 　私を幸せにしてくださいました。<br>
 　いろいろあってママを変えることになります。<br>
 <br>
 <p>★SAK（さく）さん</p>
-　<a href =""><img src="p_koko.png"></a><a href =""><img src="p_x_icon.png"></a><br>
+　<a href ="https://coconala.com/users/433339"><img src="p_koko.png"></a><a href ="https://x.com/hyakusho_moe"><img src="p_x_icon.png"></a><br>
 　色々困ってた時にようやく発見できたお絵描き（絵師）さんです。<br>
 　EDの一部を描いていただきました。<br>
 　また、他にもいろいろなイラストを描いていただくことになりそうです。<br>
@@ -871,13 +871,18 @@ const p_data = [
 　大変感謝、感激しています。<br>
 <br>
 <p>★みるもさん</p>
-　<a href =""><img src="p_koko.png"></a><a href =""><img src="p_x_icon.png"></a><br>
+　<a href ="https://coconala.com/users/832655"><img src="p_koko.png"></a><a href ="https://x.com/mirumirumirumo_"><img src="p_x_icon.png"></a><br>
 　あちこちで活躍しているロゴを作っていただきました。<br>
 　大変感謝、感激しています。<br>
 <br>
 <p>★唄夜白雪さん</p>
-　<a href =""><img src="p_koko.png"></a><a href =""><img src="p_x_icon.png"></a><br>
+　<a href ="https://coconala.com/users/1057812"><img src="p_koko.png"></a><a href ="https://x.com/yktn_08"><img src="p_x_icon.png"></a><br>
 　私の活躍できる場所（背景）を作っていただきました。<br>
+　大変感謝、感激しています。<br>
+<br>
+<p>★タケ松さん</p>
+　<a href ="https://coconala.com/users/3323370"><img src="p_koko.png"></a><a href ="https://www.youtube.com/@V%E9%8D%9B%E5%86%B6%E5%B1%8B%E3%81%AE%E3%82%BF%E3%82%B1%E6%9D%BE"><img src="p_youtube_icon.png"></a><a href ="https://x.com/Takematu4774"><img src="p_x_icon.png"></a><br>
+　私の相棒である武器（マイク）を作っていただきました。<br>
 　大変感謝、感激しています。<br>
 <br>
 <p>★スイス（国）</p>
