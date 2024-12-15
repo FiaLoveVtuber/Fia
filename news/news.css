@@ -26,12 +26,11 @@ boby{
   max-width: 960px;
   margin: 16px auto;
   background-color: rgb(213, 255, 223);
-  border-radius: 12px;
-  font-weight:bold;
   padding-top: 12px;
   padding-bottom: 9px;
   padding-left: 15px;
-  font-size: 16px;  
+  border-radius: 12px;
+  font-size: 20px;  
 }    
 
 .day{

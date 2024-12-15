@@ -1,31 +1,7 @@
   // データを読み込んで表示する関数
   function loadData(language = 'ja') {
-    const dataId = parseInt(document.getElementById('dataId').innerText)
-    
-    // データIDに一致するデータを検索
-    let nowdata = n_data.find(item => item.id == dataId);
-    let frontdata = n_data.find(item => item.id === dataId - 1);
-    let nextdata = n_data.find(item => item.id === dataId + 1) 
-    document.getElementById('n_day').innerText = nowdata.day;
-    document.getElementById('n_titl').innerText = nowdata.titl[language];
-    document.getElementById('m_text').innerText = nowdata.m_text[language];
-
-    if ( dataId > 1 ) {
-      document.getElementById('front').innerHTML =  `
-      <div class= "link_l"><a href="${dataId - 1}.html" ><img src="前.png" alt="front"></a></div>
-      <div class= "link_r"><div class="day">${frontdata.day}</div>
-      <div><a href="${dataId - 1}.html" >${frontdata.titl[language]}</a></div>`
-    }
-
-    if ( dataId !== n_id ){
-      document.getElementById('next').innerHTML =  `
-      <div class= "link_l"><a href="${dataId + 1}.html" ><img src="次.png" alt="next"></a></div>
-      <div class= "link_r"><div class="day">${nextdata.day}</div>
-      <div><a href="${dataId + 1}.html" >${nextdata.titl[language]}</a></div>`
-    }
-
     const ele = lang_w[language];
-    const menu = document.getElementById('lang_trans1');
+    const menu = document.getElementById('menu');
 
     menu.innerHTML = `
       <div class="top_bar">
@@ -59,6 +35,32 @@
         </div>
       </div>
     `;
+
+    const dataId = parseInt(document.getElementById('dataId').innerText)
+    
+    // データIDに一致するデータを検索
+    let nowdata = n_data.find(item => item.id == dataId);
+    let frontdata = n_data.find(item => item.id === dataId - 1);
+    let nextdata = n_data.find(item => item.id === dataId + 1) 
+    document.getElementById('n_day').innerText = nowdata.day;
+    document.getElementById('n_titl').innerText = nowdata.titl[language];
+    document.getElementById('m_text').innerText = nowdata.m_text[language];
+
+    if ( dataId > 1 ) {
+      document.getElementById('front').innerHTML =  `
+      <div class= "link_l"><a href="${dataId - 1}.html" ><img src="前.png" alt="front"></a></div>
+      <div class= "link_r"><div class="day">${frontdata.day}</div>
+      <div><a href="${dataId - 1}.html" >${frontdata.titl[language]}</a></div>`
+    }
+
+    if ( dataId !== n_id ){
+      document.getElementById('next').innerHTML =  `
+      <div class= "link_l"><a href="${dataId + 1}.html" ><img src="次.png" alt="next"></a></div>
+      <div class= "link_r"><div class="day">${nextdata.day}</div>
+      <div><a href="${dataId + 1}.html" >${nextdata.titl[language]}</a></div>`
+    }
+
+
   }
 
   // 言語変更時にデータを再表示
@@ -99,7 +101,17 @@
   
   // 背景画像の高さを調整する関数
   function adjustBackgroundHeight() {
-    document.getElementById('back_g').style.height = window.innerHeight + 'px';
+    let backgroundDiv = document.getElementById('back_g');
+    if (backgroundDiv) {
+      backgroundDiv.style.height = '0px';
+  
+      let windowHeight = window.innerHeight;
+      let documentHeight = document.documentElement.scrollHeight;
+      
+      let adjustedHeight = (documentHeight > windowHeight) ? documentHeight + 16 : windowHeight;
+      
+      backgroundDiv.style.height = adjustedHeight + 'px'
+    }
   }
 
   //背景変更
