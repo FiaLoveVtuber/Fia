@@ -37,7 +37,6 @@ function changeLanguage(lang) {
   `;
   setUpLinkEventListeners();
 
-
   const currentPath = window.location.pathname; // 現在のURLパスを取得
 
   // ページごとの処理を分岐
@@ -110,117 +109,13 @@ function changeLanguage(lang) {
         
       }
     
-      function changeContent(c_id) {
-        const p2 = document.getElementById('area');
-        if(p2){
-          switch (c_id) {
-            case '1':
-              let ele1 = p_data.find(item => item.id === 1);
-              let t_c1 = `<h2>${ele1[lang]}</h2>
-              <div id="tex" class="te" >
-              <table id ="tab2">
-              `;
-                for (let i = 11; i <= 23; i++) {
-                  const eleA = p_data.find(item => item.id === i);
-                  const eleB = p_data.find(item => item.id === i + 15); // 26 以降の項目に対応
-                  t_c1 += ` <tr><td class="a">${eleA[lang]}</td><td class="b">${eleB[lang]}</td></tr>`;
-                }
-                let ele1_2 = p_data.find(item => item.id === 39);
-                t_c1 += ` <tr><td colspan="2">${ele1_2[lang]}</td></tr>
-                </table>
-              </div>
-              `;
-              p2.innerHTML = t_c1;
-              break;
-    
-            case '2':
-              let ele2 = p_data.find(item => item.id === 2);
-              let t_c2 = `
-              <h2>${ele2[lang]}</h2>
-              <table class="p2">`;
-              ele2 = p_data.find(item => item.id === 41);
-              t_c2 += `<tr><td class="a">💖${ele2[lang]}</td><td class="b">#フィア　#フィア・ラブ</td></tr>`;
-              ele2 = p_data.find(item => item.id === 42);
-              t_c2 += `<tr><td class="a">🎤${ele2[lang]}</td><td class="b">#フィアライブ</td></tr>`;
-              ele2 = p_data.find(item => item.id === 43);
-              t_c2 += `<tr><td class="a">🎨${ele2[lang]}</td><td class="b">#みてみてフィアちゃん</td></tr>`;
-              ele2 = p_data.find(item => item.id === 44);
-              t_c2 += `<tr><td class="a">❓${ele2[lang]}</td><td class="b">#フィアちゃん教えて</td></tr>`;
-              ele2 = p_data.find(item => item.id === 45);
-              t_c2 += `<tr><td class="a">🍽️${ele2[lang]}</td><td class="b">#フィアちゃんこれ食べて</td></tr>`;
-              t_c2 += `</table>`;
-              p2.innerHTML = t_c2;
-              break;
-            
-            case '3':
-              let ele3 = p_data.find(item => item.id === 3);
-              let t_c3 = `
-              <h2>${ele3[lang]}</h2>`
-              ele3 = p_data.find(item => item.id === 46);
-              t_c3 +=`${ele3[lang]}`;
-              p2.innerHTML = t_c3;
-              break;
-    
-            case '4':
-              let ele4 = p_data.find(item => item.id === 4);
-              let t_c4 = `
-              <h2>${ele4[lang]}</h2>`
-              ele4 = p_data.find(item => item.id === 47);
-              t_c4 +=`${ele4[lang]}`;
-              p2.innerHTML = t_c4;
-              break;
-    
-            case '5':
-              let ele5 = p_data.find(item => item.id === 5);
-              let t_c5 = `
-              <h2>`
-              t_c5 += cleanedContent = ele5[lang].replace(/<br>/gi, '　');
-              t_c5 +=`</h2>`
-              ele5 = p_data.find(item => item.id === 48);
-              t_c5 +=`${ele5[lang]}`;
-              p2.innerHTML = t_c5;
-              break;
-    
-            case '6':
-              let ele6 = p_data.find(item => item.id === 6);
-              let t_c6 = `
-              <h2>`
-              t_c6 += cleanedContent = ele6[lang].replace(/<br>/gi, '');
-              t_c6 +=`</h2>`
-              ele6 = p_data.find(item => item.id === 49);
-              t_c6 +=`${ele6[lang]}`;
-              p2.innerHTML = t_c6;
-              break;
-    
-            case '7':
-              let ele7 = p_data.find(item => item.id === 7);
-              let t_c7 = `
-              <h2>${ele7[lang]}</h2>`
-              ele7 = p_data.find(item => item.id === 50);
-              t_c7 +=`${ele7[lang]}`;
-              p2.innerHTML = t_c7;
-              break;
-    
-            case '8':
-              let ele8 = p_data.find(item => item.id === 8);
-              let t_c8 = `
-              <h2>`
-              t_c8 += cleanedContent = ele8[lang].replace(/<br>/gi, '');
-              t_c8 +=`</h2>`
-              ele8 = p_data.find(item => item.id === 51);
-              t_c8 +=`${ele8[lang]}`;
-              p2.innerHTML = t_c8;
-              break;
-
-          }
-        }
-      }
-
       // 各セルのクリックイベントリスナーを設定
       document.querySelectorAll('#tab td').forEach(cell => {
         cell.addEventListener('click', function() {
           const c_id = this.getAttribute('data-c');
-          changeContent(c_id);
+          localStorage.setItem('c_id', c_id);
+          changeContent(c_id, lang);
+          adjustBackgroundHeight();
         });
       });
       break;
@@ -240,8 +135,120 @@ function changeLanguage(lang) {
   const languageSelect = document.getElementById('language');
   if (languageSelect) {
     languageSelect.value = lang;
+    const currentPath = window.location.pathname;
+    if (currentPath.endsWith('profile.html')) {
+      const c_id = localStorage.getItem('c_id');
+      changeContent(c_id, lang);
+      adjustBackgroundHeight();
+    }
   }
   localStorage.setItem('preferredLanguage', lang);
+}
+
+function changeContent(c_id, lang) {
+  const p2 = document.getElementById('area');
+  if(p2){
+    switch (c_id) {
+      case '1':
+        let ele1 = p_data.find(item => item.id === 1);
+        let t_c1 = `<h2>${ele1[lang]}</h2>
+        <div id="tex" class="te" >
+        <table id ="tab2">
+        `;
+          for (let i = 11; i <= 23; i++) {
+            const eleA = p_data.find(item => item.id === i);
+            const eleB = p_data.find(item => item.id === i + 15); // 26 以降の項目に対応
+            t_c1 += ` <tr><td class="a">${eleA[lang]}</td><td class="b">${eleB[lang]}</td></tr>`;
+          }
+          let ele1_2 = p_data.find(item => item.id === 39);
+          t_c1 += ` <tr><td colspan="2">${ele1_2[lang]}</td></tr>
+          </table>
+        </div>
+        `;
+        p2.innerHTML = t_c1;
+        break;
+
+      case '2':
+        let ele2 = p_data.find(item => item.id === 2);
+        let t_c2 = `
+        <h2>${ele2[lang]}</h2>
+        <table class="p2">`;
+        ele2 = p_data.find(item => item.id === 41);
+        t_c2 += `<tr><td class="a">💖${ele2[lang]}</td><td class="b">#フィア　#フィア・ラブ</td></tr>`;
+        ele2 = p_data.find(item => item.id === 42);
+        t_c2 += `<tr><td class="a">🎤${ele2[lang]}</td><td class="b">#フィアライブ</td></tr>`;
+        ele2 = p_data.find(item => item.id === 43);
+        t_c2 += `<tr><td class="a">🎨${ele2[lang]}</td><td class="b">#みてみてフィアちゃん</td></tr>`;
+        ele2 = p_data.find(item => item.id === 44);
+        t_c2 += `<tr><td class="a">❓${ele2[lang]}</td><td class="b">#フィアちゃん教えて</td></tr>`;
+        ele2 = p_data.find(item => item.id === 45);
+        t_c2 += `<tr><td class="a">🍽️${ele2[lang]}</td><td class="b">#フィアちゃんこれ食べて</td></tr>`;
+        t_c2 += `</table>`;
+        p2.innerHTML = t_c2;
+        break;
+      
+      case '3':
+        let ele3 = p_data.find(item => item.id === 3);
+        let t_c3 = `
+        <h2>${ele3[lang]}</h2>`
+        ele3 = p_data.find(item => item.id === 46);
+        t_c3 +=`${ele3[lang]}`;
+        p2.innerHTML = t_c3;
+        break;
+
+      case '4':
+        let ele4 = p_data.find(item => item.id === 4);
+        let t_c4 = `
+        <h2>${ele4[lang]}</h2>`
+        ele4 = p_data.find(item => item.id === 47);
+        t_c4 +=`${ele4[lang]}`;
+        p2.innerHTML = t_c4;
+        break;
+
+      case '5':
+        let ele5 = p_data.find(item => item.id === 5);
+        let t_c5 = `
+        <h2>`
+        t_c5 += cleanedContent = ele5[lang].replace(/<br>/gi, '　');
+        t_c5 +=`</h2>`
+        ele5 = p_data.find(item => item.id === 48);
+        t_c5 +=`${ele5[lang]}`;
+        p2.innerHTML = t_c5;
+        break;
+
+      case '6':
+        let ele6 = p_data.find(item => item.id === 6);
+        let t_c6 = `
+        <h2>`
+        t_c6 += cleanedContent = ele6[lang].replace(/<br>/gi, '');
+        t_c6 +=`</h2>`
+        ele6 = p_data.find(item => item.id === 49);
+        t_c6 +=`${ele6[lang]}`;
+        p2.innerHTML = t_c6;
+        break;
+
+      case '7':
+        let ele7 = p_data.find(item => item.id === 7);
+        let t_c7 = `
+        <h2>${ele7[lang]}</h2>`
+        ele7 = p_data.find(item => item.id === 50);
+        t_c7 +=`${ele7[lang]}`;
+        p2.innerHTML = t_c7;
+        break;
+
+      case '8':
+        let ele8 = p_data.find(item => item.id === 8);
+        let t_c8 = `
+        <h2>`
+        t_c8 += cleanedContent = ele8[lang].replace(/<br>/gi, '');
+        t_c8 +=`</h2>`
+        ele8 = p_data.find(item => item.id === 51);
+        t_c8 +=`${ele8[lang]}`;
+        p2.innerHTML = t_c8;
+        break;
+
+    }
+  }
 }
 
 //ページの初回ロード時に設定をする、言語別に自動で切り替えている
@@ -270,6 +277,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
   localStorage.setItem('preferredLanguage', preferredLanguage);
 
   changeLanguage(preferredLanguage);
+  const currentPath = window.location.pathname;
+  if (currentPath.endsWith('profile.html')) {
+    changeContent('1',preferredLanguage);
+  }
 
   changeBackground();
   adjustBackgroundHeight();
@@ -311,6 +322,8 @@ function changeBackground() {
 function adjustBackgroundHeight() {
   let backgroundDiv = document.getElementById('back_g');
   if (backgroundDiv) {
+    backgroundDiv.style.height = '0px';
+
     let windowHeight = window.innerHeight;
     let documentHeight = document.documentElement.scrollHeight;
     
