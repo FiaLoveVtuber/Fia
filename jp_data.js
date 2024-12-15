@@ -839,7 +839,7 @@ const p_data = [
 　いろいろ強引だったけど、それでも感謝しているよ。<br>
 <br>
 <p>★フィアちゃんのお姉ちゃん</p>
-　<a href ="https://www.youtube.com/@kasumiV0111/streams"><img src="P_youtube_icon.png"></a><a href ="https://twitter.com/K_kasumiV"><img src="p_x_icon.png"></a><br>
+　<a href ="https://www.youtube.com/@kasumiV0111/streams"><img src="p_youtube_icon.png"></a><a href ="https://twitter.com/K_kasumiV"><img src="p_x_icon.png"></a><br>
 　かすみお姉ちゃん（胡蝶かすみ）です。<br>
 　<br>
 　フィアちゃんに相手に好きであること伝える大切さを教えてもらいました。<br>
@@ -856,7 +856,7 @@ const p_data = [
 　大変感謝、感激しています。<br>
 <br>
 <p>★あかさたぬさん</p>
-　<a href =""><img src="p_koko.png"></a><a href ="https://www.youtube.com/@akasatanu"><img src="P_youtube_icon.png"></a><a href ="https://twitter.com/akasatanu512"><img src="p_x_icon.png"></a><br>
+　<a href =""><img src="p_koko.png"></a><a href ="https://www.youtube.com/@akasatanu"><img src="p_youtube_icon.png"></a><a href ="https://twitter.com/akasatanu512"><img src="p_x_icon.png"></a><br>
 　私を描いてくれたママです。<br>
 　私を生み出してくれて本当にありがとう♪大変感謝、感激しています。<br>
 　私を幸せにしてくださいました。<br>
