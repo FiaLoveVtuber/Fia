@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>フィア・ラブ 公式ファンサイト</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="c_share.css">
+    <style>
+      .m{
+        height: 100px;
+      }
+
+      .n_c{
+        max-width: 960px;
+        margin: 16px auto;
+        border-radius: 12px;
+        padding-top: 11.5px;
+        padding-bottom: 9px;
+        padding-left: 15.5px;
+        font-size: 16px;
+      }
+
+      .n_c .day{
+        font-size: 12px;
+        margin-bottom: -3.5px;
+      }
+
+      .n_c a{
+        margin: 0 auto 0 12px;
+        color: #333;
+        font-weight:bold;
+      }
+    </style>
+    <script src="j_lang_w.js"></script>
+    <script src="news/n_data.js"></script>
+    <script src="j_share.js"></script>
+  </head>
+  <body>
+    <div class="back_a" id="back_g">
+
+      <div id="lang_trans1" class="font_c" lang="ja">
+        <div class="top_bar">
+          <div class="bar_l"><img src = "p_logo.png"></img></div>
+          <div class="bar_r">
+            <a href = "index.html">ホーム</a>
+            <a href = "news.html">お知らせ</a>
+            <a href = "index/profile.html">自己紹介</a>
+            <a href = "music_v.html">ミュージックビデオ</a>
+            <a href = "index/learning.html">学習</a>
+            <a href = "index/contact.html">問い合わせ</a>
+            <a href = "index/shop.html">お店</a>
+            <div class="lab">言語を選択：</div>
+            <div class="language_select">
+              <select id="language" onchange="changeLanguage(this.value)">
+                <option value="ja">日本語</option>
+                <option value="en">English</option>
+                <option value="zh">中文</option>
+                <option value="ko">한국어</option>
+                <option value="fr">Français</option>
+                <option value="de">Deutsch</option>
+                <option value="it">Italiano</option>
+                <option value="es">Español</option>
+                <option value="pt">Português</option>
+                <option value="pl">Polski</option>
+                <option value="tr">Türkçe</option>
+                <option value="ru">Русский</option>
+                <option value="uk">Українська</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="m"></div><!--どうやらワンクッション置かないとだめっぽい-->
+
+      <div class="n_c font_c" lang="ja">
+        <div id="lang_trans5"></div>
+      </div>
+    </div>
+  </body>
+</html>

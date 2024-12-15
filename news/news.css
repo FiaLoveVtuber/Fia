@@ -1,0 +1,93 @@
+boby{
+  overflow: hidden; /* 画面の外に出るコンテンツは隠されます */
+}
+
+.hidden {
+  display: none;
+}
+
+.m{
+  height: 100px;
+}
+    
+.back_a { 
+  width: 100%;
+  position: absolute;
+  top: 0; left: 0;
+  background-repeat: repeat;
+}
+
+.winter_n { background-image: url('../p_winter.png'); }
+.spring_n { background-image: url('../p_spring.png'); }
+.summer_n { background-image: url('../p_summer.png'); }
+.autumn_n { background-image: url('../p_autumn.png'); }
+
+.n_c{
+  max-width: 960px;
+  margin: 16px auto;
+  background-color: rgb(213, 255, 223);
+  border-radius: 12px;
+  font-weight:bold;
+  padding-top: 12px;
+  padding-bottom: 9px;
+  padding-left: 15px;
+  font-size: 16px;  
+}    
+
+.day{
+  font-size: 12px;
+  margin-bottom: -3.5px;
+}
+
+p{
+  font-size: 24px;
+  margin-bottom: -1px;
+}
+
+#m_text{
+  margin-left: 16.5px;
+  white-space: pre-wrap;
+  width: 913px;
+  margin-bottom: 24.5px;
+}
+
+.icon_links {
+  display: flex;
+  justify-content: center;
+  margin-top:-5px;
+  margin-left:-14px;
+}    
+
+.icon_links img { width: 40px; height: 40px; margin: 5px 8px 0 8px;}
+
+hr{ 
+  width: 931px;
+  border-top: 12px dotted #333;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 0;
+  margin-top:8px;
+}
+
+.link_c,.link_c2{
+  display: flex;
+  margin-left:16px;
+}
+
+.link_c{
+  margin-top:16px;
+  margin-left:16px;
+}
+
+.link_c2{
+  margin-bottom:-1.5px;
+}
+
+.link_l{
+  margin-right:16px;
+}
+
+.video_c video { 
+  width: 928px; height: auto;
+  margin-left: 1px; 
+}

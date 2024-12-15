@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>動的コンテンツの変更</title>
+  <style>
+    table {
+      width: 912px;
+      border-collapse: collapse;
+      table-layout: fixed; /* 各セルの幅を均一に設定 */
+    }
+    td {
+      border: 1px solid #000;
+      padding: 10px;
+      cursor: pointer;
+      width: 20%; /* 各セルの幅を均一に設定 */
+    }
+  </style>
+</head>
+<body>
+  <table id="contentTable">
+    <tr>
+      <td data-content="profile">プロフィール</td>
+      <td data-content="tags">タグなど</td>
+      <td data-content="qa">Q&A</td>
+      <td data-content="locations">活動場所</td>
+      <td data-content="schedule">予定表</td>
+    </tr>
+    <tr>
+      <td data-content="respect">尊敬する人<br>感謝してる人</td>
+      <td data-content="actions">ツイッターや<br>チャンネルに<br>対する行動</td>
+      <td data-content="otherActions">それ以外の行動</td>
+      <td data-content="warnings">フィアちゃんに<br>いかがわしい<br>ことしたい人へ</td>
+      <td data-content="blank"></td>
+    </tr>
+  </table>
+
+  <div id="contentArea">
+    <h2>プロフィール</h2>
+    <p>こちらはプロフィールの内容です。</p>
+  </div>
+
+  <script>
+    // コンテンツを変更する関数
+    function changeContent(content) {
+      const contentArea = document.getElementById('contentArea');
+      switch (content) {
+        case 'profile':
+          contentArea.innerHTML = `
+            <h2>プロフィール</h2>
+            <p>こちらはプロフィールの内容です。</p>
+          `;
+          break;
+        case 'tags':
+          contentArea.innerHTML = `
+            <h2>タグなど</h2>
+            <p>こちらはタグに関する情報です。</p>
+          `;
+          break;
+        case 'qa':
+          contentArea.innerHTML = `
+            <h2>Q&A</h2>
+            <p>こちらは質問と回答のセクションです。</p>
+          `;
+          break;
+        case 'locations':
+          contentArea.innerHTML = `
+            <h2>活動場所</h2>
+            <p>こちらは活動場所のリストです。</p>
+          `;
+          break;
+        case 'schedule':
+          contentArea.innerHTML = `
+            <h2>予定表</h2>
+            <p>こちらは今後の予定です。</p>
+          `;
+          break;
+        case 'respect':
+          contentArea.innerHTML = `
+            <h2>尊敬する人<br>感謝してる人</h2>
+            <p>こちらは尊敬する人と感謝している人についてです。</p>
+          `;
+          break;
+        case 'actions':
+          contentArea.innerHTML = `
+            <h2>フィアちゃんの行動</h2>
+            <p>こちらはフィアちゃんのツイッターやチャンネルに対する行動です。</p>
+          `;
+          break;
+        case 'otherActions':
+          contentArea.innerHTML = `
+            <h2>それ以外の行動</h2>
+            <p>こちらはフィアちゃんのその他の行動についてです。</p>
+          `;
+          break;
+        case 'warnings':
+          contentArea.innerHTML = `
+            <h2>警告</h2>
+            <p>フィアちゃんにいかがわしいことしたい人への警告です。</p>
+          `;
+          break;
+        case 'blank':
+          contentArea.innerHTML = `<p>このセルには内容がありません。</p>`;
+          break;
+        default:
+          contentArea.innerHTML = `<p>選択項目をクリックしてください。</p>`;
+      }
+    }
+
+    // 各セルのクリックイベントリスナーを設定
+    document.querySelectorAll('#contentTable td').forEach(cell => {
+      cell.addEventListener('click', function() {
+        const content = this.getAttribute('data-content');
+        changeContent(content);
+      });
+    });
+
+    // ページ読み込み時にプロフィールを表示
+    window.onload = function() {
+      changeContent('profile');
+    };
+  </script>
+</body>
+</html>
