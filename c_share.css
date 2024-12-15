@@ -1,0 +1,131 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  margin: 0 auto -16px; /* デフォルトのマージンをリセット */
+  padding: 0;
+}
+
+body {
+  font-size: 24px;
+  line-height: 1.6;
+  background-color: rgb(255, 200, 220);
+  color: #333;
+  background-repeat: repeat;
+}
+
+.back_a{
+  background-size: 170px 170px;
+}
+
+p{ color: rgb(0, 162, 232); }
+
+.winter { background-image: url('p_winter.png'); }
+.spring { background-image: url('p_spring.png'); }
+.summer { background-image: url('p_summer.png'); }
+.autumn { background-image: url('p_autumn.png'); }
+
+.back_a{
+  background-size: 170px 170px;
+}
+
+.top_bar {
+  height: 100px; /* 縦100px */
+  background-color: white; /* 白色 */
+  width: 100%; /* 横幅を全画面に設定 */
+  position: fixed; /* 常に画面の上部に表示 */
+  display: flex;
+  justify-content: space-between; /* 左右に要素を配置 */
+  align-items: center; /* 垂直方向の中央揃え */
+  font-size: 24px;
+  z-index: 10;
+}
+
+.bar_r {
+  display: flex;
+  align-items: center;
+}
+
+a{
+  text-decoration: none;
+  color: rgb(0, 162, 232); /* 必要に応じて文字色を設定 */
+}
+
+.bar_r a { 
+  margin: 0 10px; /* リンク間のスペースを追加 */
+}
+
+.lab{
+  margin-left: 20px;
+}
+
+.language_select {
+  margin: -2.5px 20px 0px 0px;
+  font-size: 24px;
+}
+
+.language_select select{
+  height: 22px;
+  font-size: 20px;
+  margin-top:-1px;
+  padding-bottom: 1.5px;
+}
+
+.language_select option{
+  font-size: 20px;
+}
+
+@font-face {
+  font-family: '07にくまるフォント';
+    src:
+      url('07にくまるフォント.woff2') format('woff2'),
+      url('07にくまるフォント.woff') format('woff'),
+      url('07にくまるフォント.ttf') format('truetype'),
+      url('07にくまるフォント.otf') format('opentype');
+  font-weight: bold;
+}
+
+.font_c[lang="ja"]{
+  font-family: "07にくまるフォント","Hachi Maru Pop", "ヒラギノ丸ゴ ProN", "Hiragino Maru Gothic ProN", "游ゴシック体", "Yu Gothic", "メイリオ", "Meiryo", sans-serif;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.font_c[lang="zh"]{
+  font-family: "Microsoft Yahei", "PingHei", sans-serif;
+  font-weight: normal;
+}
+
+.font_c[lang="ko"]{
+  font-family: "Single Day", "카페24 숑숑", "땅스부대찌개", "창원단감아삭체", "Malgun Gothic", "Yoon Gothic", sans-serif;
+  font-weight: bold;
+}
+
+.font_c:not([lang="ja"]):not([lang="zh"]):not([lang="ko"]){
+  font-family: "Comic Sans MS", "MV Boli", "Chalkduster", "Chalkboard SE", "cursive", "Rockwell", sans-serif;
+  font-weight: normal;
+  font-size: 18px;
+}
+
+.n_c{
+  background-color: rgb(213, 255, 223);
+}
+
+@media (max-width: 960px) {
+   body { max-width: 100%; /* 幅が1440pxを超えないようにする */ }
+}
+
+@media (max-width: 768px) {
+  header, main, footer { padding: 10px; }
+}
+
+@media (max-width: 480px) {
+  .language_select { font-size: 14px; }
+   h1 { font-size: 24px; }
+   h4 { font-size: 12px; margin-top: -20px;}
+}
+
+
