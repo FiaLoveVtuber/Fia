@@ -11,9 +11,9 @@ function changeLanguage(lang) {
         <a href = "news.html">${ele.news}</a>
         <a href = "profile.html">${ele.profile}</a>
         <a href = "music_v.html">${ele.music_v}</a>
-        <a href = "index/learning.html">${ele.learning}</a>
-        <a href = "index/contact.html">${ele.contact}</a>
-        <a href = "index/shop.html">${ele.shop}</a>
+        <a href = "learning.html">${ele.learning}</a>
+        <a href = "contact.html">${ele.contact}</a>
+        <a href = "shop.html">${ele.shop}</a>
         <div class="lab">${ele.language_s}：</div>
         <div class="language_select">
           <select id="language" onchange="changeLanguage(this.value)">
@@ -126,6 +126,68 @@ function changeLanguage(lang) {
       }
       break;
 
+    case currentPath.endsWith('learning.html'):
+      const l = document.getElementById('l');
+      if(l){
+        l.innerHTML = `<p>${ele.learning}</p>
+        ${l_data[0][lang]}<br>
+        <br>
+        <p>${l_data[1][lang]}</p>
+        <table>
+          <tr><td class = "a" >　${l_data[2][lang]}</td><td class="b">${l_data[3][lang]}</td></tr>
+          <tr><td class = "a" >　${l_data[4][lang]}</td><td class="b">${l_data[5][lang]}</td></tr>
+          <tr><td class = "a" >　${l_data[6][lang]}</td><td class="b">${l_data[7][lang]}</td></tr>
+          <tr><td class = "a" >　${l_data[8][lang]}</td><td class="b">${l_data[9][lang]}</td></tr>
+          <tr><td class = "a" >　${l_data[10][lang]}</td><td class="b">${l_data[11][lang]}</td></tr>
+          <tr><td class = "a" >　${l_data[12][lang]}</td><td class="b">${l_data[13][lang]}</td></tr>
+          <tr><td class = "a" >　${l_data[14][lang]}</td><td class="b">${l_data[15][lang]}</td></tr>
+        </table>
+        <br>
+        <p>${l_data[16][lang]}</p>
+        <table>
+          <tr><td class = "a" >　${l_data[17][lang]}</td><td class="b">${l_data[18][lang]}</td></tr>
+          <tr><td class = "a" >　${l_data[19][lang]}</td><td class="b">${l_data[20][lang]}</td></tr>
+          <tr><td class = "a" >　${l_data[21][lang]}</td><td class="b">${l_data[22][lang]}</td></tr>
+          <tr><td class = "a" >　${l_data[23][lang]}</td><td class="b">${l_data[24][lang]}</td></tr>
+        </table>
+        <br>
+        <div class="pre">${l_data[25][lang]}</div>
+        <br>
+        <p>${l_data[26][lang]}</p>
+        <table>
+          <tr><td class = "a" >　${l_data[27][lang]}</td><td class="b">${l_data[28][lang]}</td></tr>
+          <tr><td class = "a" >　${l_data[29][lang]}</td><td class="b">${l_data[30][lang]}</td></tr>
+          <tr><td class = "a" >　${l_data[31][lang]}</td><td class="b">${l_data[32][lang]}</td></tr>
+        </table>
+        <br>
+        <div class="pre">${l_data[33][lang]}</div>
+        <br>
+        <p>${l_data[34][lang]}</p>
+        　${l_data[35][lang]}<br>
+        <br>
+        <p>${l_data[36][lang]}</p>
+        　${l_data[37][lang]}<br>
+        <br>`;
+      }
+      break;
+
+    case currentPath.endsWith('contact.html'):
+      const c = document.getElementById('c');
+      if(c){
+        c.innerHTML = `<p>${ele.contact}</p>`;
+        let c_c1 = c_data.find(item => item.id === 1);
+        c.innerHTML += `${c_c1[lang]}`;
+      }
+      break;
+
+    case currentPath.endsWith('shop.html'):
+      const s = document.getElementById('s');
+      if(s){
+        s.innerHTML = `<p>${ele.shop}</p>`;
+        let c_s1 = s_data.find(item => item.id === 1);
+        s.innerHTML += `${c_s1[lang]}`;
+      }
+      break;
   }
 
   //セレクトボックスでlanguage を選択させられたら実行に移す 
@@ -326,9 +388,6 @@ function adjustBackgroundHeight() {
     let documentHeight = document.documentElement.scrollHeight;
     
     let adjustedHeight = (documentHeight > windowHeight) ? documentHeight + 16 : windowHeight;
-
-    // 現在のURLを取得
-    let currentURL = window.location.pathname;
     
     backgroundDiv.style.height = adjustedHeight + 'px'
   }
@@ -336,7 +395,7 @@ function adjustBackgroundHeight() {
 
 //初回ロードが終わったら作動させる
 window.addEventListener('load', function() {
-
+  initializeTextAnimation();
 });
 
 //ウィンドウサイズ変更時に、背景画像の高さを再調整する

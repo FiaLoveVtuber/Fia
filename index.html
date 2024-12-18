@@ -59,8 +59,8 @@
         display: flex;
         justify-content: center;
         overflow: hidden;
-        width: 100%;
-        margin-top: 557px;
+        max-width: 960px;
+        margin: 557px auto 0px;
       }
 
       .img_w {
@@ -144,6 +144,26 @@
       .video_c video::-ms-media-controls { display: none !important; }
       .video_c video::-o-media-controls { display: none !important; }
       .video_c video::media-controls { display: none !important; }
+ 
+      #container {
+            width: 540px; /* 箱の幅 */
+            height: 558px; /* 箱の高さ */
+            overflow: hidden;
+            position: relative;
+            margin: 0 auto -558.5px;
+        }
+
+        #output {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .character {
+            position: absolute;
+            font-size: 24px;
+            color: rgb(0, 128, 32);
+        }
 
       .twitter_container {
         width: 464px; /* 横幅を464pxに設定 */
@@ -157,6 +177,8 @@
         width: 100%;
         height: 100%;
       }
+
+      .rotate { display: inline-block; transform: rotate(90deg); /* 90度回転 */ }
     </style>
     <script>
       //画像スクロール
@@ -190,6 +212,123 @@
         setInterval(autoScroll, 2000); // スクロール間隔を設定
       });
 
+
+      function initializeTextAnimation() {
+        const outputElement = document.getElementById('output');
+        const lang = document.documentElement.lang;
+        let ot_s;
+        let currentTextIndex = 1;
+        const delay = 100; // 文字を表示する速度（ミリ秒）
+
+        function typeText(element, text, delay = 100) {
+          let index = 0;
+          const lineHeight = 24; // 行の高さ (ピクセル単位)
+          const charWidth = 20; // 文字の幅 (ピクセル単位)
+          const startX = 502; // 初期位置X（右端から開始）
+          const startY = -7.5;  // 初期位置Y
+          let x = startX;
+          let y = startY;
+
+          function getRandomTextIndex(excludeIndex) {
+            let randomIndex;
+            const rareChance1 = Math.random() < 1 / 10000; // 1万分の1の確率
+            const rareChance2 = Math.random() < 1 / 1000; // 1000分の1の確率
+            const rareChance3 = Math.random() < 1 / 500;  // 500分の1の確率
+
+            // 現在の日付を取得
+            const today = new Date();
+            const isSpecialDate = today.getMonth() === 9 && today.getDate() === 9; // 10月9日
+
+            if (rareChance1) { //10000分の1
+              if( randomIndex === excludeIndex ){
+                randomIndex = Math.floor(Math.random() * 43) + 4; //4-46
+              } else {
+                randomIndex = 106;
+              }
+            } else if (rareChance2) {
+              do {// 1000分の1
+                randomIndex = Math.floor(Math.random() * 2) + 101; //101-102
+              } while (randomIndex === excludeIndex);
+            } else if (rareChance3) {
+              do { //500分の1
+                randomIndex = Math.floor(Math.random() * 3) + 91; //91-93
+              } while (randomIndex === excludeIndex);
+            } else if (isSpecialDate) {
+              do { //お誕生
+                randomIndex = Math.floor(Math.random() * 15) + 71; //71-85
+              } while (randomIndex === excludeIndex);
+            } else {
+              do { //通常
+                randomIndex = Math.floor(Math.random() * 43) + 4; //4-46
+              } while (randomIndex === excludeIndex);
+            }
+            return randomIndex;
+          }
+
+          function addCharacter() {
+            if (index < text.length) {
+              const charElement = document.createElement('span');
+              charElement.textContent = text.charAt(index);
+              if ('～ー（）'.includes(text.charAt(index))) {
+                charElement.classList.add('rotate');
+              }
+              charElement.classList.add('character');
+
+              // ピクセル単位での位置指定
+              charElement.style.left = `${x}px`;
+              charElement.style.top = `${y}px`;
+
+              // 次の文字の位置を計算
+              if (text.charAt(index) === '\n') {
+                x -= 28; // 改行時にx座標を調整
+                y = startY; // y座標をリセット
+              } else if (text.charAt(index) === '\t') {
+                const beforeTab = text.slice(0, index);
+                const afterTab = text.slice(index + 1);
+                const regex1 = /\n.*?\t/; // タブの前に改行があるか
+                const regex2 = /\n.*?\t.*?\n/; // タブの前後両方に改行があるか
+                if (regex1.test(beforeTab)) { 
+                  x -= 460; // タブ文字時にx座標を調整
+                } else if (
+                  regex2.test(beforeTab + '\t' + afterTab)) {
+                  x -= 432; // タブ文字時にx座標を調整
+                } else {
+                  x -= 488; // タブ文字時にx座標を調整
+                }
+                y = startY;
+              } else {
+                y += lineHeight; // 通常の文字は左に進む
+              }
+
+              element.appendChild(charElement);
+              index++;
+              setTimeout(addCharacter, delay); // 次の文字までの遅延
+            } else if (currentTextIndex < 46) {
+              // 次のテキストを表示するために、一定の遅延後に最初の行を削除
+              setTimeout(() => {
+                element.innerHTML = '';
+                if (currentTextIndex < 4) {
+                  currentTextIndex++;
+                } else {
+                  let previousTextIndex = currentTextIndex;
+                  currentTextIndex = getRandomTextIndex(previousTextIndex);
+                }
+                ot_s = i_data.find(item => item.id === currentTextIndex);
+                typeText(element, ot_s[lang], delay);
+                index = 0; x = 0; y = 0;
+              }, 3000); // 最初の行を表示後に2秒の遅延
+            } else { // テキストが全て表示されたらループ開始
+              currentTextIndex = 3; // ランダムに3〜6行目を表示
+              index = 0; x = 0; y = 0;
+              setTimeout(addCharacter, delay);
+            }
+          }
+          addCharacter();
+        }
+        ot_s = i_data.find(item => item.id === currentTextIndex);
+        typeText(outputElement, ot_s[lang], delay);
+      }
+
       //リンクを開くと新しい窓を作る
       document.querySelectorAll('.new_window').forEach(function(link) {
         link.addEventListener('click', function(event) {
@@ -199,6 +338,7 @@
       });
     </script>
     <script src="j_lang_w.js"></script>
+    <script src="ji_data.js"></script>
     <script src="news/n_data.js"></script>
     <script src="j_share.js"></script>
   </head>
@@ -214,7 +354,8 @@
       </div>
 
       <div id="i1"></div>
-      <div id="i2"></div>
+      <!--<div id="i2"></div>-->
+      <div id="container"><div id="output"></div></div>
 
       <div class="img_c">
         <div class="img_w" id="img_s">

@@ -20,7 +20,7 @@
           news: 'News',
           profile: 'Profile',
           music_v: 'Music Videos',
-          learning: 'learning',
+          learning: 'Learning',
           contact: 'Contact',
           shop: 'Shop',
           mes01: 'Thank you for coming to',
