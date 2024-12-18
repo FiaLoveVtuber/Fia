@@ -60,7 +60,6 @@
       <div><a href="${dataId + 1}.html" >${nextdata.titl[language]}</a></div>`
     }
 
-
   }
 
   // 言語変更時にデータを再表示
